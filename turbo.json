@@ -27,7 +27,8 @@
       "cache": false
     },
     "typecheck": {
-      "outputs": []
+      "dependsOn": ["^typecheck"],
+      "outputs": ["dist/**"]
     },
     "test": {
       "outputs": ["coverage/**"]
