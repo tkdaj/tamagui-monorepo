@@ -1,0 +1,71 @@
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' tsc && vite build && electron-builder",
+    "build:mac": "NODE_OPTIONS='--max-old-space-size=4096' tsc && vite build && electron-builder --mac",
+    "build:win": "NODE_OPTIONS='--max-old-space-size=4096' tsc && vite build && electron-builder --win",
+    "build:linux": "NODE_OPTIONS='--max-old-space-size=4096' tsc && vite build && electron-builder --linux",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "start": "electron .",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "clean": "rm -rf dist dist-electron .turbo node_modules"
+  },
+  "dependencies": {
+    "@my/lib-auth": "workspace:*",
+    "@my/lib-config": "workspace:*",
+    "@my/lib-db": "workspace:*",
+    "@my/lib-ui": "workspace:*",
+    "@supabase/supabase-js": "^2.48.1",
+    "@tamagui/config": "1.144.2",
+    "@tamagui/core": "1.144.2",
+    "@tanstack/react-router": "^1.132.0",
+    "electron-store": "^10.0.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-native-web": "^0.21.2",
+    "tamagui": "1.144.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "electron": "^33.4.11",
+    "electron-builder": "^26.4.0",
+    "typescript": "^5.7.3",
+    "vite": "^7.3.1",
+    "vite-plugin-electron": "^0.29.0",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.myproject.desktop",
+    "productName": "My Project",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}

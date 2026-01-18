@@ -1,0 +1,151 @@
+{
+  "folders": [{ "name": "My Project", "path": "." }],
+  "extensions": {
+    "recommendations": [
+      // Frontend extensions
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      // Mobile development
+      "expo.vscode-expo-tools",
+    ],
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      // Web: TanStack Start dev mode
+      {
+        "name": "Web: Dev Mode",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["run", "dev"],
+        "cwd": "${workspaceFolder}/apps/web",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "restart": true,
+        "skipFiles": ["<node_internals>/**"],
+        "env": {
+          "NODE_ENV": "development",
+        },
+        "resolveSourceMapLocations": [
+          "${workspaceFolder}/apps/web/**",
+          "${workspaceFolder}/lib/**",
+          "!**/node_modules/**",
+        ],
+      },
+      // Desktop: Electron dev mode
+      {
+        "name": "Desktop: Electron Dev Mode",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["run", "dev"],
+        "cwd": "${workspaceFolder}/apps/desktop",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "restart": true,
+        "skipFiles": ["<node_internals>/**"],
+        "env": {
+          "NODE_ENV": "development",
+        },
+        "resolveSourceMapLocations": [
+          "${workspaceFolder}/apps/desktop/**",
+          "${workspaceFolder}/apps/web/**",
+          "${workspaceFolder}/lib/**",
+          "!**/node_modules/**",
+        ],
+      },
+      // Mobile: Expo dev mode
+      {
+        "name": "Mobile: Expo Dev Mode",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["run", "dev"],
+        "cwd": "${workspaceFolder}/apps/mobile",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "restart": true,
+        "skipFiles": ["<node_internals>/**"],
+        "env": {
+          "NODE_ENV": "development",
+        },
+        "resolveSourceMapLocations": [
+          "${workspaceFolder}/apps/mobile/**",
+          "${workspaceFolder}/lib/**",
+          "!**/node_modules/**",
+        ],
+      },
+      // Mobile: iOS Simulator
+      {
+        "name": "Mobile: iOS Simulator",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["run", "ios"],
+        "cwd": "${workspaceFolder}/apps/mobile",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "skipFiles": ["<node_internals>/**"],
+      },
+    ],
+    "compounds": [
+      {
+        "name": "All Apps",
+        "configurations": ["Web: Dev Mode", "Desktop: Electron Dev Mode"],
+        "stopAll": true,
+        "presentation": {
+          "hidden": false,
+          "group": "development",
+          "order": 1,
+        },
+      },
+    ],
+  },
+  "settings": {
+    // Shared workspace defaults
+    "chat.mcp.autostart": "newAndOutdated",
+    "editor.aiStats.enabled": true,
+    "chat.todoListTool.enabled": true,
+    "githubPullRequests.codingAgent.uiIntegration": true,
+    "chat.agentSessionsViewLocation": "view",
+    "github.copilot.enable": { "*": true },
+
+    "files.associations": {
+      ".eslintrc": "jsonc",
+      ".prettierrc": "jsonc",
+      ".code-workspace": "jsonc",
+      ".eslintignore": "ignore",
+    },
+
+    // TypeScript/ESLint across all apps
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.validate.enable": true,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.importModuleSpecifierEnding": "minimal",
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.suggest.autoImports": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "eslint.workingDirectories": [
+      "apps/web",
+      "apps/desktop",
+      "apps/mobile",
+      "lib/api",
+      "lib/auth",
+      "lib/config",
+      "lib/db",
+      "lib/ui",
+      "lib/utils",
+    ],
+    "eslint.useFlatConfig": true,
+
+    "[typescript,typescriptreact,json,jsonc,html,css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "never",
+      },
+    },
+  },
+}

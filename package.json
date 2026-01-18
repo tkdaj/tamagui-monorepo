@@ -1,0 +1,75 @@
+{
+  "name": "my-project",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
+    "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=web",
+    "dev:mobile": "turbo run dev --filter=mobile",
+    "dev:ios": "turbo run ios --filter=mobile",
+    "dev:android": "turbo run android --filter=mobile",
+    "dev:desktop": "turbo run dev --filter=desktop",
+    "build": "turbo run build",
+    "build:web": "turbo run build --filter=web",
+    "build:mobile": "turbo run build --filter=mobile",
+    "build:desktop": "turbo run build --filter=desktop",
+    "start": "turbo run start",
+    "start:web": "turbo run start --filter=web",
+    "start:desktop": "turbo run start --filter=desktop",
+    "test": "turbo run test",
+    "test:web": "turbo run test --filter=web",
+    "test:mobile": "turbo run test --filter=mobile",
+    "test:desktop": "turbo run test --filter=desktop",
+    "test:unit": "turbo run test:unit",
+    "test:e2e:web": "turbo run test:e2e --filter=web",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "clean": "turbo run clean && node scripts/clean.mjs",
+    "new:lib": "node scripts/new-lib.mjs",
+    "new:app": "node scripts/new-app.mjs",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset",
+    "db:types": "node scripts/supabase-types.mjs",
+    "routes:types": "turbo run routes:types --filter=web",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "only-allow": "^1.2.1",
+    "prettier": "^3.4.2",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.53.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "react-native": "~0.81.0"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md,yaml,yml,css,scss}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  }
+}

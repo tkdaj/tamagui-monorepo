@@ -1,0 +1,36 @@
+{
+  "name": "@my/lib-config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./env/shared": "./src/env/shared.ts",
+    "./env/web": "./src/env/web.ts",
+    "./env/mobile": "./src/env/mobile.ts",
+    "./env/desktop": "./src/env/desktop.ts",
+    "./generated/web-routes": "./src/generated/web-routes.d.ts",
+    "./tamagui": "./src/tamagui/config.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist .turbo node_modules"
+  },
+  "dependencies": {
+    "@tamagui/animations-css": "1.144.2",
+    "@tamagui/config": "1.144.2",
+    "@tamagui/shorthands": "1.144.2",
+    "@tamagui/themes": "1.144.2",
+    "tamagui": "1.144.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}

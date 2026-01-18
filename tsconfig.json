@@ -1,0 +1,25 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./lib/utils"
+    },
+    {
+      "path": "./lib/config"
+    },
+    {
+      "path": "./lib/db"
+    },
+    {
+      "path": "./lib/api"
+    },
+    {
+      "path": "./lib/auth"
+    },
+    {
+      "path": "./lib/ui"
+    }
+  ],
+  "compilerOptions": {},
+  "extends": "expo/tsconfig.base"
+}
