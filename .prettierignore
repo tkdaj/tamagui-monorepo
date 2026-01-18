@@ -9,6 +9,6 @@ dist/**
 out/**
 node_modules/**
 .turbo/**
-lib/**/src/types/*.gen.ts
+*.gen.ts
 package.json
 *.yaml
