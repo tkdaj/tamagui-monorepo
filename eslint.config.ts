@@ -72,12 +72,7 @@ export default tseslint.config(
             {
               target: "./apps/**",
               from: "./apps/**",
-              except: [
-                "./apps/*/src/**",
-                "./node_modules/**",
-                "**/node_modules/**",
-                "./apps/desktop/**", // Desktop app can import from any app
-              ],
+              except: ["./node_modules/**", "**/node_modules/**", "./apps/desktop/**"],
               message: "Apps cannot import from other apps. Use shared libs instead.",
             },
             // Libs cannot import from apps
