@@ -44,7 +44,7 @@
     "db:reset": "supabase db reset",
     "db:types": "node scripts/supabase-types.mjs",
     "routes:types": "turbo run routes:types --filter=web",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
