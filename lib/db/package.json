@@ -8,8 +8,8 @@
     "./types": "./src/types/database.gen.ts"
   },
   "scripts": {
-    "build": "tsc",
-    "typecheck": "tsc --noEmit",
+    "build": "tsc --build",
+    "typecheck": "tsc --build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
