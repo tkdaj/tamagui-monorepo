@@ -1,0 +1,14 @@
+# Ignore CocoaPods and generated outputs
+**/ios/Pods/**
+**/Pods/**
+apps/**/ios/Pods/**
+apps/**/android/**/build/**
+apps/**/.expo/**
+apps/**/.output/**
+dist/**
+out/**
+node_modules/**
+.turbo/**
+lib/**/src/types/*.gen.ts
+package.json
+*.yaml

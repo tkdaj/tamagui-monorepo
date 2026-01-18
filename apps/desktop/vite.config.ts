@@ -1,59 +1,59 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import electron from "vite-plugin-electron";
-import renderer from "vite-plugin-electron-renderer";
-import { fileURLToPath, URL } from "url";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import electron from 'vite-plugin-electron';
+import renderer from 'vite-plugin-electron-renderer';
+import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
   plugins: [
     react(),
     electron([
       {
-        entry: "electron/main.ts",
+        entry: 'electron/main.ts',
         onstart(args) {
           void args.startup();
         },
         vite: {
           build: {
-            outDir: "dist-electron",
+            outDir: 'dist-electron',
             rollupOptions: {
-              external: ["electron"],
+              external: ['electron'],
             },
           },
         },
       },
       {
-        entry: "electron/preload.ts",
+        entry: 'electron/preload.ts',
         onstart(args) {
           args.reload();
         },
         vite: {
           build: {
-            outDir: "dist-electron",
+            outDir: 'dist-electron',
             minify: false,
             rollupOptions: {
-              external: ["electron"],
+              external: ['electron'],
               output: {
-                format: "cjs",
-                entryFileNames: "[name].cjs",
+                format: 'cjs',
+                entryFileNames: '[name].cjs',
                 inlineDynamicImports: true,
               },
               plugins: [
                 {
-                  name: "remove-exports",
+                  name: 'remove-exports',
                   generateBundle(_options, bundle) {
                     // Post-process the preload.cjs file to remove export statements
                     for (const fileName in bundle) {
-                      if (fileName === "preload.cjs") {
+                      if (fileName === 'preload.cjs') {
                         const chunk = bundle[fileName];
-                        if (chunk && chunk.type === "chunk") {
+                        if (chunk && chunk.type === 'chunk') {
                           // Remove any export statements
-                          chunk.code = chunk.code.replace(/^export\s+default\s+.+;?\s*$/gm, "");
+                          chunk.code = chunk.code.replace(/^export\s+default\s+.+;?\s*$/gm, '');
                           // Execute the wrapped function immediately
                           chunk.code = chunk.code.replace(
                             /var require_preload = __commonJS\({[^}]+}\);$/,
                             (match: string) => {
-                              return match + "\nrequire_preload();";
+                              return match + '\nrequire_preload();';
                             }
                           );
                         }
@@ -71,19 +71,19 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("../web/src", import.meta.url)),
-      "@web": fileURLToPath(new URL("../web/src", import.meta.url)),
-      "react-native": "react-native-web",
+      '@': fileURLToPath(new URL('../web/src', import.meta.url)),
+      '@web': fileURLToPath(new URL('../web/src', import.meta.url)),
+      'react-native': 'react-native-web',
     },
   },
   define: {
-    "process.env": {},
-    "process.platform": JSON.stringify(process.platform),
-    "process.version": JSON.stringify(process.version),
+    'process.env': {},
+    'process.platform': JSON.stringify(process.platform),
+    'process.version': JSON.stringify(process.version),
   },
   optimizeDeps: {
-    exclude: ["fsevents"],
-    include: ["react-native-web"],
+    exclude: ['fsevents'],
+    include: ['react-native-web'],
   },
   server: {
     port: 5173,

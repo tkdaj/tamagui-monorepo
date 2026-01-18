@@ -1,8 +1,8 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase";
+import { createFileRoute, useRouter } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { supabase } from '../../lib/supabase';
 
-export const Route = createFileRoute("/auth/callback")({
+export const Route = createFileRoute('/auth/callback')({
   component: AuthCallback,
 });
 
@@ -20,13 +20,13 @@ function AuthCallback() {
 
         if (data.session) {
           // Successfully authenticated, redirect to home
-          void router.navigate({ to: "/" });
+          void router.navigate({ to: '/' });
         } else {
-          throw new Error("No session found");
+          throw new Error('No session found');
         }
       } catch (err) {
-        console.error("Auth callback error:", err);
-        setError(err instanceof Error ? err.message : "Authentication failed");
+        console.error('Auth callback error:', err);
+        setError(err instanceof Error ? err.message : 'Authentication failed');
       }
     };
 
@@ -35,16 +35,16 @@ function AuthCallback() {
 
   if (error) {
     return (
-      <div style={{ padding: "40px", textAlign: "center" }}>
+      <div style={{ padding: '40px', textAlign: 'center' }}>
         <h1>Authentication Error</h1>
-        <p style={{ color: "red" }}>{error}</p>
-        <button onClick={() => void router.navigate({ to: "/login" })}>Back to Login</button>
+        <p style={{ color: 'red' }}>{error}</p>
+        <button onClick={() => void router.navigate({ to: '/login' })}>Back to Login</button>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
+    <div style={{ padding: '40px', textAlign: 'center' }}>
       <h1>Completing sign in...</h1>
     </div>
   );

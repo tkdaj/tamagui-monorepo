@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { getPunkSongs } from "@/data/demo.punk-songs";
+import { createFileRoute } from '@tanstack/react-router';
+import { getPunkSongs } from '@/data/demo.punk-songs';
 
-export const Route = createFileRoute("/demo/start/ssr/data-only")({
-  ssr: "data-only",
+export const Route = createFileRoute('/demo/start/ssr/data-only')({
+  ssr: 'data-only',
   component: RouteComponent,
   loader: async () => await getPunkSongs(),
 });

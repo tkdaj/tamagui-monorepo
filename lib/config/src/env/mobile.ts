@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { sharedEnvSchema } from "./shared";
+import { z } from 'zod';
+import { sharedEnvSchema } from './shared';
 
 export const mobileEnvSchema = sharedEnvSchema.extend({
   MOBILE_AUTH_REDIRECT_URL: z.string().min(1),

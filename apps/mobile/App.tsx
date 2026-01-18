@@ -1,7 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import { LoginPage } from "@my/lib-ui";
-import { TamaguiProvider, type TamaguiProviderProps, YStack } from "tamagui";
-import config from "./tamagui.config";
+import { StatusBar } from 'expo-status-bar';
+import { LoginPage } from '@my/lib-ui';
+import { TamaguiProvider, type TamaguiProviderProps, YStack } from 'tamagui';
+import config from './tamagui.config';
 
 export default function App() {
   const handleGoogleSignIn = async () => {
@@ -15,8 +15,15 @@ export default function App() {
   };
 
   return (
-    <TamaguiProvider config={config as TamaguiProviderProps["config"]}>
-      <YStack flex={1} justifyContent="center" alignItems="center" backgroundColor="$background">
+    <TamaguiProvider config={config as TamaguiProviderProps['config']}>
+      <YStack
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '$background',
+        }}
+      >
         <LoginPage onGoogleSignIn={handleGoogleSignIn} onEmailSignIn={handleEmailSignIn} />
         <StatusBar style="auto" />
       </YStack>

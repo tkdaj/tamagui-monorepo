@@ -7,7 +7,7 @@ export function invariant(condition: unknown, message: string): asserts conditio
 export function log(message: string, ...args: unknown[]): void {
   // In production, this could be replaced with a proper logging service
 
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.log(`[LOG] ${message}`, ...args);
   }
@@ -30,11 +30,11 @@ export function isDefined<T>(value: T | null | undefined): value is T {
 }
 
 export function isString(value: unknown): value is string {
-  return typeof value === "string";
+  return typeof value === 'string';
 }
 
 export function isNumber(value: unknown): value is number {
-  return typeof value === "number" && !Number.isNaN(value);
+  return typeof value === 'number' && !Number.isNaN(value);
 }
 
 export function assertNever(value: never): never {

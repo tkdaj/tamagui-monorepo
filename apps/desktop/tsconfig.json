@@ -13,6 +13,6 @@
     "skipLibCheck": true,
     "types": ["node", "vite/client"]
   },
-  "include": ["src/**/*", "electron/**/*", "vite.config.ts"],
+  "include": ["src/**/*", "electron/**/*", "vite.config.ts", "tamagui.config.ts"],
   "exclude": ["node_modules", "dist", "dist-electron", "release"]
 }

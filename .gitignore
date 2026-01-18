@@ -64,6 +64,9 @@ out/
 dist-electron/
 release/
 
+# Supabase generated types
+lib/db/src/types/database.gen.ts
+
 
 # Storybook
 storybook-static/

@@ -24,16 +24,16 @@ const pkg = {
   main: 'dist/index.js',
   exports: {
     '.': {
-      import: './src/index.ts'
-    }
+      import: './src/index.ts',
+    },
   },
   scripts: {
     build: 'tsc -p tsconfig.json',
     typecheck: 'tsc -p tsconfig.json --noEmit',
     lint: 'eslint src --ext .ts,.tsx',
     'lint:fix': 'eslint src --ext .ts,.tsx --fix',
-    clean: 'rm -rf dist'
-  }
+    clean: 'rm -rf dist',
+  },
 };
 
 fs.writeFileSync(path.join(libDir, 'package.json'), JSON.stringify(pkg, null, 2));
@@ -44,12 +44,12 @@ const tsconfig = {
     composite: true,
     outDir: 'dist',
     rootDir: 'src',
-    declaration: true
+    declaration: true,
   },
-  include: ['src']
+  include: ['src'],
 };
 fs.writeFileSync(path.join(libDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
 
-fs.writeFileSync(path.join(libDir, 'src', 'index.ts'), "export {}\n");
+fs.writeFileSync(path.join(libDir, 'src', 'index.ts'), 'export {}\n');
 
 console.log('Created lib at', libDir);

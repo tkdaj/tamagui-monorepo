@@ -26,12 +26,18 @@ const pkg = {
     build: 'turbo build',
     start: 'turbo start',
     lint: 'eslint src --ext .ts,.tsx',
-    'lint:fix': 'eslint src --ext .ts,.tsx --fix'
-  }
+    'lint:fix': 'eslint src --ext .ts,.tsx --fix',
+  },
 };
 
 fs.writeFileSync(path.join(appDir, 'package.json'), JSON.stringify(pkg, null, 2));
-fs.writeFileSync(path.join(appDir, 'tsconfig.json'), JSON.stringify({ extends: '../../tsconfig.base.json', include: ['src'] }, null, 2));
-fs.writeFileSync(path.join(appDir, 'src', 'index.tsx'), `import React from 'react';\nimport { createRoot } from 'react-dom/client';\n\nconst App = () => <div>Welcome to ${name}</div>;\n\nconst root = document.getElementById('root');\nif (root) createRoot(root).render(<App />);\n`);
+fs.writeFileSync(
+  path.join(appDir, 'tsconfig.json'),
+  JSON.stringify({ extends: '../../tsconfig.base.json', include: ['src'] }, null, 2)
+);
+fs.writeFileSync(
+  path.join(appDir, 'src', 'index.tsx'),
+  `import React from 'react';\nimport { createRoot } from 'react-dom/client';\n\nconst App = () => <div>Welcome to ${name}</div>;\n\nconst root = document.getElementById('root');\nif (root) createRoot(root).render(<App />);\n`
+);
 
 console.log('Created app at', appDir);

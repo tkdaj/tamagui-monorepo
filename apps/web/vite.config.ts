@@ -1,16 +1,16 @@
-import { defineConfig } from "vite";
-import { devtools } from "@tanstack/devtools-vite";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import viteReact from "@vitejs/plugin-react";
-import viteTsConfigPaths from "vite-tsconfig-paths";
-import { fileURLToPath, URL } from "url";
-import { nitro } from "nitro/vite";
+import { defineConfig } from 'vite';
+import { devtools } from '@tanstack/devtools-vite';
+import { tanstackStart } from '@tanstack/react-start/plugin/vite';
+import viteReact from '@vitejs/plugin-react';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
+import { fileURLToPath, URL } from 'url';
+import { nitro } from 'nitro/vite';
 
 const config = defineConfig({
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-      "react-native": "react-native-web",
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      'react-native': 'react-native-web',
     },
   },
   plugins: [
@@ -18,14 +18,14 @@ const config = defineConfig({
     nitro(),
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
-      projects: ["./tsconfig.json"],
+      projects: ['./tsconfig.json'],
     }),
 
     tanstackStart(),
     viteReact(),
   ],
   optimizeDeps: {
-    include: ["react-native-web"],
+    include: ['react-native-web'],
   },
 });
 

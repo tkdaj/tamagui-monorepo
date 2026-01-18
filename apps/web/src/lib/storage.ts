@@ -1,7 +1,7 @@
-import type { SessionStorage } from "@my/lib-auth";
+import type { SessionStorage } from '@my/lib-auth';
 
 // Check if we're in a browser environment
-const isBrowser = typeof window !== "undefined" && typeof localStorage !== "undefined";
+const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
 
 // Web storage implementation using localStorage
 export const webStorage: SessionStorage = {

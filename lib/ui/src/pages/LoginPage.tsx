@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { YStack, XStack, Text, Separator } from "tamagui";
-import { Button, Input } from "../atoms";
+import { useState } from 'react';
+import { YStack, XStack, Text, Separator } from 'tamagui';
+import { Button, Input } from '../atoms';
 
 export interface LoginPageProps {
   onGoogleSignIn: () => Promise<void>;
@@ -15,7 +15,7 @@ export function LoginPage({
   isBusy = false,
   onError,
 }: LoginPageProps) {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [localError, setLocalError] = useState<string | null>(null);
 
   const handleGoogleSignIn = async () => {
@@ -23,7 +23,7 @@ export function LoginPage({
       setLocalError(null);
       await onGoogleSignIn();
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to sign in with Google";
+      const message = err instanceof Error ? err.message : 'Failed to sign in with Google';
       setLocalError(message);
       onError?.(message);
     }
@@ -31,7 +31,7 @@ export function LoginPage({
 
   const handleEmailSignIn = async () => {
     if (!email) {
-      const message = "Please enter your email";
+      const message = 'Please enter your email';
       setLocalError(message);
       onError?.(message);
       return;
@@ -40,7 +40,7 @@ export function LoginPage({
       setLocalError(null);
       await onEmailSignIn(email);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Failed to sign in with email";
+      const message = err instanceof Error ? err.message : 'Failed to sign in with email';
       setLocalError(message);
       onError?.(message);
     }
@@ -66,7 +66,7 @@ export function LoginPage({
       )}
 
       <Button onPress={handleGoogleSignIn} disabled={isBusy} variant="primary">
-        {isBusy ? "Signing in..." : "Sign in with Google"}
+        {isBusy ? 'Signing in...' : 'Sign in with Google'}
       </Button>
 
       <XStack alignItems="center" space="$3" width="100%" paddingVertical="$2">
@@ -84,7 +84,7 @@ export function LoginPage({
       />
 
       <Button onPress={handleEmailSignIn} disabled={isBusy || !email} variant="secondary">
-        {isBusy ? "Sending..." : "Sign in with Email"}
+        {isBusy ? 'Sending...' : 'Sign in with Email'}
       </Button>
     </YStack>
   );

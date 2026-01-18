@@ -48,7 +48,7 @@ for (const file of appFiles) {
   for (const imp of imports) {
     if (!imp) continue;
     // handle relative imports
-    if (imp.startsWith('.') ) {
+    if (imp.startsWith('.')) {
       const resolved = path.normalize(path.join(path.dirname(file), imp));
       // if resolved path is within repo, check if it goes into apps/<otherApp>
       const rel = path.relative(root, resolved);

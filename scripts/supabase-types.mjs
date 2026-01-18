@@ -3,7 +3,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-const outPath = path.resolve(process.cwd(), 'lib/db/src/types/database.ts');
+const outPath = path.resolve(process.cwd(), 'lib/db/src/types/database.gen.ts');
 const args = process.argv.slice(2);
 const force = args.includes('--force');
 
@@ -49,7 +49,9 @@ if (!supabaseUrl || !serviceRole) {
 // If we reach here, attempt to run the supabase CLI. This assumes `supabase` is in PATH.
 try {
   // Prefer project ref if provided via SUPABASE_PROJECT_REF
-  const projectArg = process.env.SUPABASE_PROJECT_REF ? `--project ${process.env.SUPABASE_PROJECT_REF}` : '';
+  const projectArg = process.env.SUPABASE_PROJECT_REF
+    ? `--project ${process.env.SUPABASE_PROJECT_REF}`
+    : '';
   const cmd = `supabase gen types typescript ${projectArg} > "${outPath}"`;
   console.log('Running:', cmd);
   execSync(cmd, { stdio: 'inherit' });

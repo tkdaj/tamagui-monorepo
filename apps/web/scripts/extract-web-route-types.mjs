@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-import { writeFileSync } from "fs";
-import { resolve, dirname } from "path";
-import { fileURLToPath } from "url";
+import { writeFileSync } from 'fs';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const outputPath = resolve(__dirname, "../../../lib/config/src/generated/web-routes.d.ts");
+const outputPath = resolve(__dirname, '../../../lib/config/src/generated/web-routes.d.ts');
 
 // This is a placeholder implementation
 // In a real scenario, you would parse the generated routeTree.gen.ts
@@ -23,5 +23,5 @@ export type WebRoutePath =
   | string;
 `;
 
-writeFileSync(outputPath, content, "utf-8");
-console.log("✓ Generated web route types at", outputPath);
+writeFileSync(outputPath, content, 'utf-8');
+console.log('✓ Generated web route types at', outputPath);

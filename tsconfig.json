@@ -1,6 +1,9 @@
 {
   "files": [],
-  "include": ["eslint.config.ts"],
+  "include": ["eslint.config.ts", "prettier.config.js", "commitlint.config.js"],
+  "compilerOptions": {
+    "strictNullChecks": true
+  },
   "references": [
     {
       "path": "./lib/utils"
@@ -21,6 +24,6 @@
       "path": "./lib/ui"
     }
   ],
-  "compilerOptions": {},
+  "exclude": ["lib/**/src/types/*.gen.ts"],
   "extends": "expo/tsconfig.base"
 }

@@ -4,12 +4,6 @@
     "strict": true,
     "moduleResolution": "Bundler"
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "metro.config.js"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "metro.config.js"]
 }

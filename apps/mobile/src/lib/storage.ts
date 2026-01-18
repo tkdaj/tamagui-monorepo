@@ -1,5 +1,5 @@
-import * as SecureStore from "expo-secure-store";
-import type { SessionStorage } from "@my/lib-auth";
+import * as SecureStore from 'expo-secure-store';
+import type { SessionStorage } from '@my/lib-auth';
 
 // Mobile storage implementation using Expo SecureStore
 export const mobileStorage: SessionStorage = {

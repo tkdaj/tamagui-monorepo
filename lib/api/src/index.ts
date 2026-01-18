@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 // Example DTO schemas for future API endpoints
 export const userSchema = z.object({

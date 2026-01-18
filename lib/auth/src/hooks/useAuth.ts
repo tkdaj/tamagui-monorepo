@@ -1,6 +1,6 @@
-import { useState } from "react";
-import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "@my/lib-db";
+import { useState } from 'react';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import type { Database } from '@my/lib-db';
 
 export interface UseAuthOptions {
   supabase: SupabaseClient<Database>;
@@ -19,7 +19,7 @@ export function useAuth({ supabase, redirectUrl, onSuccess, onError, onOpenUrl }
     setError(null);
     try {
       const { data, error: authError } = await supabase.auth.signInWithOAuth({
-        provider: "google",
+        provider: 'google',
         options: {
           redirectTo: redirectUrl,
         },
@@ -40,7 +40,7 @@ export function useAuth({ supabase, redirectUrl, onSuccess, onError, onOpenUrl }
       }
       return null;
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Failed to sign in with Google";
+      const errorMessage = err instanceof Error ? err.message : 'Failed to sign in with Google';
       setError(errorMessage);
       if (onError) {
         onError(err instanceof Error ? err : new Error(errorMessage));
@@ -53,7 +53,7 @@ export function useAuth({ supabase, redirectUrl, onSuccess, onError, onOpenUrl }
 
   const signInWithEmail = async (email: string) => {
     if (!email) {
-      const err = new Error("Please enter your email");
+      const err = new Error('Please enter your email');
       setError(err.message);
       onError?.(err);
       throw err;
@@ -73,7 +73,7 @@ export function useAuth({ supabase, redirectUrl, onSuccess, onError, onOpenUrl }
 
       onSuccess?.();
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Failed to sign in with email";
+      const errorMessage = err instanceof Error ? err.message : 'Failed to sign in with email';
       setError(errorMessage);
       onError?.(err instanceof Error ? err : new Error(errorMessage));
       throw err;

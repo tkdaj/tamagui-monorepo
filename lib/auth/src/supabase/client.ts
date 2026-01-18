@@ -1,6 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-import type { Database } from "@my/lib-db";
-import type { SessionStorage } from "../storage/types";
+import { createClient } from '@supabase/supabase-js';
+import type { Database } from '@my/lib-db';
+import type { SessionStorage } from '../storage/types';
 
 export interface CreateSupabaseClientOptions {
   url: string;

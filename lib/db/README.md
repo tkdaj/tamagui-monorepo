@@ -15,9 +15,16 @@ Generation
 pnpm db:types
 ```
 
-This runs `scripts/supabase-types.mjs` which calls the Supabase CLI and writes `lib/db/src/types/database.ts`.
+This runs `scripts/supabase-types.mjs` which calls the Supabase CLI and writes `lib/db/src/types/database.gen.ts`.
 
-Notes for CI
+Notes for CI and workflow
 
-- The generated file is checked into the repository. Regenerate only when the database schema changes.
-- If you want CI to regenerate types, store `SUPABASE_SERVICE_ROLE_KEY` as a secret and run `pnpm db:types` in a protected job.
+- The generated file (`lib/db/src/types/database.gen.ts`) is ignored by default and not committed. This keeps secrets out of the repo and ensures developers generate the latest types locally.
+- Recommended options:
+  - CI regeneration: Add `SUPABASE_SERVICE_ROLE_KEY` as a secret and run `pnpm db:types` in a protected CI job, then optionally commit the generated types to a branch or artifact for downstream jobs.
+  - Commit a stable stub: If you prefer deterministic builds without CI secrets, commit a minimal stub file (e.g., `database.stub.ts`) that exports basic `Json`/`Database` shapes developers can extend; update `package.json` types entry to point to the committed stub.
+
+Developer flow
+
+- Local: run `pnpm db:types` to generate `lib/db/src/types/database.gen.ts` before running the dev server or build.
+- CI: prefer regenerating types in CI using a secret and a protected job.

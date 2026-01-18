@@ -9,12 +9,14 @@
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
     "dev": "turbo run dev",
+    "predev": "pnpm run scripts:supabase-types -- --force || true",
     "dev:web": "turbo run dev --filter=web",
     "dev:mobile": "turbo run dev --filter=mobile",
     "dev:ios": "turbo run ios --filter=mobile",
     "dev:android": "turbo run android --filter=mobile",
     "dev:desktop": "turbo run dev --filter=desktop",
     "build": "turbo run build",
+    "prebuild": "pnpm run scripts:supabase-types -- --force || true",
     "build:web": "turbo run build --filter=web",
     "build:mobile": "turbo run build --filter=mobile",
     "build:desktop": "turbo run build --filter=desktop",
@@ -30,6 +32,8 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "typecheck": "turbo run typecheck",
+    "pretypecheck": "pnpm run scripts:supabase-types -- --force || true",
+    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run scripts:check-boundaries",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "clean": "turbo run clean && node scripts/clean.mjs",
@@ -45,6 +49,10 @@
     "db:types": "node scripts/supabase-types.mjs",
     "routes:types": "turbo run routes:types --filter=web",
     "prepare": "husky install"
+  },
+  "ai": {
+    "help": "echo \"See copilot-instructions.md and CLAUDE.md at repo root\"",
+    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run scripts:check-boundaries"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
